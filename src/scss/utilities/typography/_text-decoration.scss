@@ -1,0 +1,17 @@
+//
+// Text Decoration
+//
+
+@if $generate-utility-classes {
+  $config: (
+    properties: text-decoration,
+    selector: "txt",
+    values: (
+      "decor-none": none,
+      "underline": underline,
+    ),
+    enable-important-values: true,
+  );
+
+  @include generate-style($config);
+}

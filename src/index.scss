@@ -1,0 +1,8 @@
+#root {
+  height: 100%;
+  min-height: 100vh;
+}
+
+$body-background: radial-gradient(#202731, #0e1116);
+$body-color: white;
+@import "./scss/fluid.scss";

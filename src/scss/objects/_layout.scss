@@ -1,0 +1,115 @@
+//
+// Layout
+//
+
+@if $generate-object-classes {
+  //
+  // Doc : add Doc
+  //
+  .lyt-header {
+    @extend %position-relative;
+    z-index: $header-zindex;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    min-height: $header-height;
+    padding-right: $header-padding-x;
+    padding-left: $header-padding-x;
+    border-top: $header-bordertop;
+    color: $header-color;
+    background-color: $header-background;
+
+    @include transition($header-transition);
+
+    &.is-collapse {
+      min-height: $header-height-collapsed;
+    }
+
+    &.is-expanded {
+      min-height: $header-height-expanded;
+    }
+  }
+
+  //
+  // Doc : add Doc
+  //
+  .lyt-main {
+    @extend %position-relative;
+    background: $main-background;
+  }
+
+  //
+  // Doc : add Doc
+  //
+  .lyt-sidebar {
+    color: $sidebar-color;
+    background-color: $sidebar-background;
+  }
+
+  .lyt-sidebar.fixed {
+    top: 0;
+    bottom: 0;
+    #{$sidebar-direction}: -100%;
+    z-index: $sidebar-zindex;
+    overflow: auto;
+    width: 100%;
+    @include transition($sidebar-transition);
+
+    @include media-breakpoint-above(sm) {
+      width: inherit;
+      min-width: $sidebar-minwidth;
+      max-width: $sidebar-maxwidth;
+    }
+
+    + .overlay {
+      z-index: $sidebar-zindex - 1;
+    }
+
+    &:target,
+    &.active {
+      #{$sidebar-direction}: 0;
+
+      + .overlay {
+        @extend %overlay-active;
+      }
+    }
+  }
+
+  //
+  // Doc : add Doc
+  //
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $overlay-zindex;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background: $overlay-background;
+
+    @if $enable-transitions {
+      opacity: 0;
+      @include transition($overlay-transition);
+    }
+
+    &.active {
+      @extend %overlay-active;
+    }
+  }
+
+  //
+  // Doc : add Doc
+  //
+  .lyt-footer {
+    @extend %position-relative;
+    z-index: $footer-zindex;
+    padding: $footer-padding-y $footer-padding-x;
+    color: $footer-color;
+    background-color: $footer-background;
+  }
+}

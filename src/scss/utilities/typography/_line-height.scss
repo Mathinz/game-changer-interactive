@@ -1,0 +1,20 @@
+//
+// Line Height
+//
+
+@if $generate-utility-classes {
+  $config: (
+    properties: line-height,
+    selector: "lh",
+    values: (
+      "1": 1,
+      "1-2": 1.2,
+      "1-5": 1.5,
+      "2": 2,
+      normal: normal
+    ),
+    enable-important-values: true
+  );
+
+  @include generate-style($config);
+}
